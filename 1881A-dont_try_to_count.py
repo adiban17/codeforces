@@ -1,4 +1,4 @@
-if __name__=="__main__":
+if __name__ == "__main__":
     t = int(input())
 
     for _ in range(t):
@@ -6,30 +6,38 @@ if __name__=="__main__":
         x = input()
         s = input()
 
-        counter = 0
-        found = 0
+        operations_needed = 0
+        found = False
 
-        if m < n:
+        if n <= m:
+            while True:
+                if s in x:
+                    #print(operations_needed)
+                    found = True
+                    break
+                else:
+                    while len(x) <= 2*m:
+                        x = x+x
+                        operations_needed += 1
+                        if s in x:
+                            found = True
+                            break
+
+                        #print(f"x={x}\ns={s}\noperations needed={operations_needed}")
+                    break
+
+                    
+        else:
             if s in x:
-                found = 1
+                found = True
             else:
                 x = x+x
                 if s in x:
-                    counter +=1
-                    print(1)
-        else:
-            while len(x) <= 2*(len(s)):
-                if s in x:
-                    found = 1
-                    print(counter)
-                    break
-                else:
-                    x = x+x
-                    counter += 1
-                    #print(x)
-                    #print(counter)
+                    found = True
+                    operations_needed += 1
 
-        if found == 0 and s in x:
-            print(counter)
-        if found == 0 and s not in x:
+
+        if found:
+            print(operations_needed)
+        else:
             print(-1)
