@@ -5,21 +5,18 @@ if __name__ == "__main__":
 
         a, b, c = map(int, input().split())
 
-        if c % 2 == 0:
-            total_a = a + (c//2)
-            total_b = b + (c//2)
+        total_anna = 0
+        total_katie = 0
+
+        if c%2==0:
+            total_anna = a + c//2
+            total_katie = b + c//2
         else:
-            total_a = a + (c//2)
+            total_anna = a + (c+1)//2
+            total_katie = b + (c-1)//2
 
-        
-        if a == b:
-            if c % 2 == 1:
-                print('First')
-            else:
-                print('Second')
-        elif a > b:
-            print('First')
-        elif b > a:
-            print('Second')
+        if total_anna > total_katie:
+            print("First")
+        else:
+            print("Second")
 
-            2 1 3
