@@ -1,0 +1,5 @@
+- The logic is there but the implementation isn't (books on a shelf, value counter)
+- Need to solve more problems based on implementation
+- Need to give more contests
+- Solved 2 questions 
+- Did know the solution to the (value counter) question but time got up
