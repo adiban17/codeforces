@@ -18,4 +18,6 @@ if __name__ == "__main__":
                 if p[x] <= p[y]:
                     pairs.append([p[x], p[y]])
 
-        print(pairs)
+        #print(pairs)
+
+        

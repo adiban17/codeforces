@@ -1,7 +1,18 @@
 import math
 from functools import reduce
 
-def find_gcd(arr):
+
+# function to find if the array is good or not
+def is_good(arr):
+    length = len(arr)
+
+    if length >= calc_gcd(arr):
+        return True
+    else:
+        return False
+
+# function to calculate the gcd
+def calc_gcd(arr):
     return reduce(math.gcd, arr)
 
 
@@ -9,43 +20,35 @@ if __name__ == "__main__":
     t = int(input())
 
     for _ in range(t):
+
+    # take inputs
         n = int(input())
         a = list(map(int, input().split()))
 
+        # case for n = 2
         if n == 2:
-            gcd = find_gcd(a)
-            if gcd <= n:
-                print('YES')
+            if is_good(a):
+                print("Yes")
             else:
-                print("NO")
+                print("No")
         else:
-            gcd = find_gcd(a)
-            new_a = []
-            gcd_count = 0
-            for num in a:
-                if num == gcd:
-                    gcd_count += 1
-            
-            for i in range(gcd_count):
-                new_a.append(gcd)
-            
-            no_gcd_a = [item for item in a if item != gcd]
-            no_gcd_a.sort()
-            for num in no_gcd_a:
-                new_a.append(num)
+            # case for n > 2
 
-            flag = True
-            x = 2
-            for i in range(n-1):
-                gcd = find_gcd(new_a[:x])
-                len_new_a = len(new_a[:x])
-                x += 1
-                if gcd > len_new_a:
-                    flag = False
-                else:
-                    continue
+            flag = False
 
+            # check if any pair have gcd <= 2
+            for i in range(0, n-1):
+                for j in range(i+1, n):
+                    if calc_gcd([a[i], a[j]]) <= 2:
+                        flag = True
+                        break
+                    else:
+                        continue
+
+            # final condition
             if flag == True:
-                print("YES")
+                print("Yes")
             else:
-                print("NO")
+                print("No")
+
+        
