@@ -1,2 +1,3 @@
-for i in reversed(range(5)):
-    print(i)
+print(75%100)
+print(75%25)
+print(85000*12)
